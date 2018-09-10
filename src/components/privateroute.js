@@ -7,7 +7,11 @@ import { inject, observer } from "mobx-react";
 export default class PrivateRoute extends React.Component {
   render() {
     const { authStore, ...restProps } = this.props;
-    if (authStore.authUser) return <Route {...restProps} />;
-    return <Redirect to="/login" />;
+
+    if (authStore.authUser) {
+      return <Route {...restProps} />;
+    } else {
+      return <Redirect to="/login" />;
+    }
   }
 }
