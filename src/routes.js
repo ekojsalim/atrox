@@ -1,37 +1,31 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-
-import withAuthentication from "./components/withAuthentication";
-
-import PrivateRoute from "./components/privateroute";
-import Home from "./components/home";
-import Login from "./components/login";
-import Dashboard from "./components/dashboard";
-
-import authStore from "./stores/authStore";
 import { Provider } from "mobx-react";
+import React from "react";
+import Loadable from "react-loadable";
+import { Route, Switch } from "react-router-dom";
+import Home from "./components/home";
+import authStore from "./stores/authStore";
+import { CircularProgress } from "@material-ui/core";
+import Sponsor from "./components/sponsor";
+
 const stores = {
   authStore
 };
 
-const WithAuthenticationRoutes = withAuthentication(() => {
-  return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />  
-    </Switch>
-  );
+const LoadableWithAuthenticationRoutes = Loadable({
+  loader: () => import("./withAuthenticationRoutes"),
+  loading: CircularProgress
 });
 
-const routes = () => {
+const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/sponsor" component={Sponsor} />
       <Provider {...stores}>
-        <WithAuthenticationRoutes />
+        <LoadableWithAuthenticationRoutes />
       </Provider>
     </Switch>
   );
 };
 
-export default routes;
+export default Routes;

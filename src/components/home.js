@@ -1,14 +1,9 @@
-import {
-  Drawer,
-  Hidden,
-  withStyles,
-  Grid,
-  Typography,
-  Button
-} from "@material-ui/core";
+import { Drawer, Hidden, Grid, Typography, Button } from "@material-ui/core";
+import withStyles from "@material-ui/core/styles/withStyles";
 import React from "react";
 import backgroundPic from "../images/back.jpg";
 import logo from "../images/logo3.png";
+import Link from "react-router-dom/Link";
 
 const styles = {
   background: {
@@ -30,13 +25,22 @@ const styles = {
     justifyContent: "center",
     alignItems: "center"
   },
+  drawerContent: {
+    height: "84%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
   logo: {
     height: "50%",
     width: "auto",
     flexBasis: "2"
   },
   content: {
-    flexGrow: 1
+    flexGrow: 1,
+    overflow: "hidden",
+    textAlign: "center"
   },
   container: {
     height: "100%"
@@ -57,15 +61,23 @@ const styles = {
     fontWeight: 200,
     letterSpacing: ".05rem"
   },
+  subtitleMobile: {
+    color: "white",
+    fontSize: "1.5em",
+    textAlign: "center",
+    fontWeight: 200,
+    letterSpacing: ".05rem"
+  },
   moreButton: {
     color: "#f7d600",
     border: "1px solid #f7d600",
     borderRadius: "0",
-    padding: "8px 40px"
+    padding: "8px 40px",
+    margin: "20px"
   },
   buttonContainer: {
     position: "absolute",
-    right: "10%",
+    right: "5%",
     bottom: "5%"
   }
 };
@@ -84,31 +96,66 @@ class Home extends React.Component {
             classes={{ paper: classes.drawerPaper }}
           >
             <div className={classes.logoSpace}>
-              <img src={logo} className={classes.logo} />
+              <img src={logo} alt="logo" className={classes.logo} />
             </div>
+            <div className={classes.drawerContent}>Test</div>
           </Drawer>
         </Hidden>
         <main className={classes.content}>
-          <Grid
-            container
-            justify="center"
-            alignItems="center"
-            className={classes.container}
-          >
-            <Grid item>
-              <Typography variant="display4" className={classes.headline}>
-                ULTIMATE CUP <span className={classes.atrox}>ATROX</span>
-              </Typography>
-              <Typography variant="display1" className={classes.subtitle}>
-                AS FIERCE AS FIRE
-              </Typography>
+          <Hidden smDown>
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              className={classes.container}
+            >
+              <Grid item>
+                <Typography variant="display4" className={classes.headline}>
+                  ULTIMATE CUP <span className={classes.atrox}>ATROX</span>
+                </Typography>
+                <Typography variant="display1" className={classes.subtitle}>
+                  AS FIERCE AS FIRE
+                </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-          <div className={classes.buttonContainer}>
-            <Button variant="outlined" size="large" className={classes.moreButton}>
-              Read More
-            </Button>
-          </div>
+            <div className={classes.buttonContainer}>
+              <Button
+                variant="outlined"
+                size="large"
+                className={classes.moreButton}
+                component={Link}
+                to="/sponsor"
+              >
+                Sponsorship
+              </Button>
+            </div>
+          </Hidden>
+          <Hidden mdUp>
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              className={classes.container}
+            >
+              <Grid item>
+                <Typography variant="display4" className={classes.headline}>
+                  <span className={classes.atrox}>ATROX</span>
+                </Typography>
+                <Typography variant="display1" className={classes.subtitleMobile}>
+                  AS FIERCE AS FIRE
+                </Typography>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  className={classes.moreButton}
+                  component={Link}
+                  to="/sponsor"
+                >
+                  Sponsorship
+                </Button>
+              </Grid>
+            </Grid>
+          </Hidden>
         </main>
       </div>
     );
