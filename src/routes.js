@@ -8,15 +8,30 @@ import Home from "./components/home";
 import Login from "./components/login";
 import Dashboard from "./components/dashboard";
 
+import authStore from "./stores/authStore";
+import { Provider } from "mobx-react";
+const stores = {
+  authStore
+};
+
+const WithAuthenticationRoutes = withAuthentication(() => {
+  return (
+    <Switch>
+      <Route path="/login" component={Login} />
+      <PrivateRoute path="/dashboard" component={Dashboard} />  
+    </Switch>
+  );
+});
 
 const routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <PrivateRoute path="/dashboard" component={Dashboard} />
+      <Provider {...stores}>
+        <WithAuthenticationRoutes />
+      </Provider>
     </Switch>
   );
 };
 
-export default withAuthentication(routes);
+export default routes;

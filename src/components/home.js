@@ -1,5 +1,11 @@
-import { Drawer, Hidden, withStyles, Grid } from "@material-ui/core";
-import { inject, observer } from "mobx-react";
+import {
+  Drawer,
+  Hidden,
+  withStyles,
+  Grid,
+  Typography,
+  Button
+} from "@material-ui/core";
 import React from "react";
 import backgroundPic from "../images/back.jpg";
 import logo from "../images/logo3.png";
@@ -38,22 +44,32 @@ const styles = {
   headline: {
     fontSize: "4.5em",
     color: "white",
-    fontFamily: "Kanit",
-    fontWeight: 400
+    fontWeight: 520,
+    letterSpacing: ".25rem"
   },
   atrox: {
     color: "#de143c"
   },
   subtitle: {
     color: "white",
-    fontSize: "2em",
-    fontFamily: "Kanit",
-    fontWeight: 300
+    fontSize: "1.8em",
+    textAlign: "center",
+    fontWeight: 200,
+    letterSpacing: ".05rem"
+  },
+  moreButton: {
+    color: "#f7d600",
+    border: "1px solid #f7d600",
+    borderRadius: "0",
+    padding: "8px 40px"
+  },
+  buttonContainer: {
+    position: "absolute",
+    right: "10%",
+    bottom: "5%"
   }
 };
 
-@inject("authStore")
-@observer
 @withStyles(styles)
 class Home extends React.Component {
   render() {
@@ -73,12 +89,26 @@ class Home extends React.Component {
           </Drawer>
         </Hidden>
         <main className={classes.content}>
-          <Grid container justify="center" alignItems="center" className={classes.container}>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            className={classes.container}
+          >
             <Grid item>
-              <h1 className={classes.headline}>ULTIMATE CUP <span className={classes.atrox}>ATROX</span></h1>
-              <h2 className={classes.subtitle}>AS FIERCE AS FIRE</h2>
+              <Typography variant="display4" className={classes.headline}>
+                ULTIMATE CUP <span className={classes.atrox}>ATROX</span>
+              </Typography>
+              <Typography variant="display1" className={classes.subtitle}>
+                AS FIERCE AS FIRE
+              </Typography>
             </Grid>
           </Grid>
+          <div className={classes.buttonContainer}>
+            <Button variant="outlined" size="large" className={classes.moreButton}>
+              Read More
+            </Button>
+          </div>
         </main>
       </div>
     );
