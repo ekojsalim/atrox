@@ -16,10 +16,16 @@ const LoadableWithAuthenticationRoutes = Loadable({
   loading: CircularProgress
 });
 
+const LoadableScanner = Loadable({
+  loader: () => import("./components/scanner"),
+  loading: CircularProgress
+});
+
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route exact path="/scan" component={LoadableScanner} />
       <Route exact path="/sponsor" component={Sponsor} />
       <Provider {...stores}>
         <LoadableWithAuthenticationRoutes />

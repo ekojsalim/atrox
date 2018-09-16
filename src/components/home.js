@@ -48,7 +48,7 @@ const styles = {
   headline: {
     fontSize: "4.5em",
     color: "white",
-    fontWeight: 520,
+    fontWeight: 600,
     letterSpacing: ".25rem"
   },
   atrox: {
@@ -79,6 +79,18 @@ const styles = {
     position: "absolute",
     right: "5%",
     bottom: "5%"
+  },
+  drawerNavButton: {
+    color: "#ffffff",
+    border: ".6px solid #47484c",
+    borderRadius: "0",
+    width: "70%",
+    letterSpacing: "1em",
+    padding: "12px"
+  },
+  navText: {
+    marginRight: "-1em",
+    fontSize: ".8em"
   }
 };
 
@@ -98,7 +110,16 @@ class Home extends React.Component {
             <div className={classes.logoSpace}>
               <img src={logo} alt="logo" className={classes.logo} />
             </div>
-            <div className={classes.drawerContent}>Test</div>
+            <div className={classes.drawerContent}>
+            <Button
+                  variant="outlined"
+                  size="large"
+                  className={classes.drawerNavButton}
+                  disableRipple={true}
+                >
+                  <span className={classes.navText}>Home</span>
+                </Button>
+            </div>
           </Drawer>
         </Hidden>
         <main className={classes.content}>
@@ -149,9 +170,9 @@ class Home extends React.Component {
                   size="large"
                   className={classes.moreButton}
                   component={Link}
-                  to="/sponsor"
+                  to="/scan"
                 >
-                  Sponsorship
+                  Scan
                 </Button>
               </Grid>
             </Grid>
