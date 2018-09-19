@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import PrivateRoute from "./components/privateroute";
 import withAuthentication from "./components/withAuthentication";
 import Loadable from "react-loadable";
-import { CircularProgress } from "@material-ui/core";
+import {CircularProgress} from "@material-ui/core";
 
 const LoadableLogin = Loadable({
   loader: () => import("./components/login"),
@@ -18,7 +18,7 @@ const LoadableDashboard = Loadable({
 const WithAuthenticationRoutes = withAuthentication(() => {
   return (
     <Switch>
-      <Route path="/login" component={LoadableLogin} />
+      <Route path="/signup" component={LoadableLogin}/>
       <PrivateRoute path="/dashboard" component={LoadableDashboard} />  
     </Switch>
   );

@@ -1,4 +1,4 @@
-import { Drawer, Hidden, Grid, Typography, Button } from "@material-ui/core";
+import {Button, Drawer, Grid, Hidden, Typography} from "@material-ui/core";
 import withStyles from "@material-ui/core/styles/withStyles";
 import React from "react";
 import backgroundPic from "../images/back.jpg";
@@ -7,7 +7,7 @@ import Link from "react-router-dom/Link";
 
 const styles = {
   background: {
-    backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${backgroundPic})`,
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${backgroundPic})`,
     height: "100vh",
     backgroundSize: "cover",
     display: "flex"
@@ -145,9 +145,9 @@ class Home extends React.Component {
                 size="large"
                 className={classes.moreButton}
                 component={Link}
-                to="/sponsor"
+                to="/signup"
               >
-                Sponsorship
+                Register
               </Button>
             </div>
           </Hidden>
@@ -170,9 +170,9 @@ class Home extends React.Component {
                   size="large"
                   className={classes.moreButton}
                   component={Link}
-                  to="/scan"
+                  to="/signup"
                 >
-                  Scan
+                  Register
                 </Button>
               </Grid>
             </Grid>
