@@ -5,6 +5,8 @@ import firebase from "../firebase";
 import {inject, observer} from "mobx-react";
 import backgroundPic from "../images/back2.jpg";
 import withStyles from "@material-ui/core/styles/withStyles";
+import {Redirect} from "react-router-dom";
+import Paper from "@material-ui/core/Paper/Paper";
 
 const styles = {
   background: {
@@ -39,11 +41,21 @@ const uiConfig = {
 @observer
 class Login extends Component {
   render() {
-    const {classes} = this.props;
+    const {classes, authStore} = this.props;
+    const dataComplete = authStore.authUserName && authStore.authUserEmail;
+
     return (
       <main className={classes.background}>
+        {authStore.loggedIn && dataComplete ? <Redirect to="/dashboard"/> : ""}
         <div className={classes.loginContainer}>
-          <AuthUI uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+          {authStore.loggedIn ?
+            <div>
+              <Paper>
+                {authStore.authUserId}
+              </Paper>
+            </div> :
+            <AuthUI uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+          }
         </div>
       </main>
     );

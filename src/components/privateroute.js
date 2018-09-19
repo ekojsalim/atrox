@@ -8,10 +8,10 @@ export default class PrivateRoute extends React.Component {
   render() {
     const { authStore, ...restProps } = this.props;
 
-    if (authStore.authUser) {
+    if (authStore.loggedIn) {
       return <Route {...restProps} />;
     } else {
-      return <Redirect to="/login" />;
+      return <Redirect to="/signup" />;
     }
   }
 }

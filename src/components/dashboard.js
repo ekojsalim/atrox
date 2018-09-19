@@ -8,7 +8,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <p>{JSON.stringify(this.props.authStore)}</p>
+        <p>{JSON.stringify(this.props.authStore.authUserId)}</p>
       </div>
     );
   }
