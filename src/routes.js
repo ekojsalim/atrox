@@ -4,8 +4,9 @@ import Loadable from "react-loadable";
 import {Route, Switch} from "react-router-dom";
 import Home from "./components/home";
 import authStore from "./stores/authStore";
-import {CircularProgress} from "@material-ui/core";
 import Sponsor from "./components/sponsor";
+import Loading from "./components/loading";
+
 
 const stores = {
   authStore
@@ -13,7 +14,7 @@ const stores = {
 
 const LoadableWithAuthenticationRoutes = Loadable({
   loader: () => import("./withAuthenticationRoutes"),
-  loading: CircularProgress
+  loading: Loading
 });
 
 const Routes = () => {

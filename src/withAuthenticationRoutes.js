@@ -3,16 +3,16 @@ import {Route, Switch} from "react-router-dom";
 import PrivateRoute from "./components/privateroute";
 import withAuthentication from "./components/withAuthentication";
 import Loadable from "react-loadable";
-import {CircularProgress} from "@material-ui/core";
+import Loading from "./components/loading";
 
 const LoadableLogin = Loadable({
   loader: () => import("./components/login"),
-  loading: CircularProgress
+  loading: Loading
 });
 
 const LoadableDashboard = Loadable({
   loader: () => import("./components/dashboard"),
-  loading: CircularProgress
+  loading: Loading
 });
 
 const WithAuthenticationRoutes = withAuthentication(() => {
