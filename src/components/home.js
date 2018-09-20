@@ -34,8 +34,7 @@ const styles = {
   },
   logo: {
     height: "50%",
-    width: "auto",
-    flexBasis: "2"
+    width: "auto"
   },
   content: {
     flexGrow: 1,
