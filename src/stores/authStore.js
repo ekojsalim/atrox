@@ -13,7 +13,7 @@ class Authstore {
     return this.authUserName && this.authUserEmail;
   }
 
-  @action setUser(authUser) {
+  @action setUser(authUser = {uid: null, displayName: null, email: null}) {
     this.authUserId = authUser.uid;
     this.authUserName = authUser.displayName;
     this.authUserEmail = authUser.email;

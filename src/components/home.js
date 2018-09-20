@@ -33,8 +33,7 @@ const styles = {
     alignItems: "center"
   },
   logo: {
-    height: "50%",
-    width: "auto"
+    width: "50%"
   },
   content: {
     flexGrow: 1,
